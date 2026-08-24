@@ -1,0 +1,40 @@
+# Local / secret files
+.env
+.env.*
+*.pem
+*.key
+*.pfx
+*.p12
+cookies.json
+session.json
+credentials.json
+secrets.*
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+
+# Node.js
+node_modules/
+
+# IDE / OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# Enterprise / private data
+private/
+internal/
+customer_data/
+order_data/
+settlement_data/
+exports_private/
+*.sqlite3
+*.db
+
+# Office temp files
+~$*.xlsx
+~$*.docx
