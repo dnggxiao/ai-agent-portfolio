@@ -1,175 +1,121 @@
 # dnggxiao · Business Automation & Workflow Systems
 
-> **I turn real operational problems into systems that work.**  
-> Business Automation · Workflow Systems · AI-Assisted Development
+> **Complex operations. Reliable systems.**
 
-**[中文](README.md) · [English](README.en.md) · [Skill library](skills/README.en.md) · [Bilingual portfolio](docs/) · [Deployment](DEPLOYMENT.md)**
+[中文](README.md) · [English](README.en.md) · [Skill library](skills/README.en.md) · [Evidence & scope](EVIDENCE.md)
 
-This is my recruiting portfolio. I focus less on how many AI tools I can name and more on whether I can understand a real workflow, turn it into explicit inputs, rules, exceptions and acceptance criteria, and deliver a repeatable system with checkable outputs.
+I turn data, business rules and repetitive operations into practical workflows for finance, e-commerce and internal tools. Development tools accelerate implementation; business requirements define what ships.
 
-Codex and ChatGPT accelerate implementation. **I remain responsible for business rules, system boundaries, acceptance and outcomes.**
+**Role interests:** Business automation · Applied AI · Internal tools
 
-## 30-second profile
+## Start with the flagship case
 
-| Capability | Evidence in this portfolio |
-| --- | --- |
-| Business process design | Turn manual work into input contracts, rules, exceptions, review and delivery |
-| Finance automation | Unified reporting workflow for WB, Amazon, Mercado Libre and Walmart |
-| Operations automation | Alibaba.com inquiry classification, customer registration and sales attribution |
-| Data & local software | Excel automation, Django/SQLite applications, import/export and recovery |
-| AI-assisted development | Codex/ChatGPT for implementation, refactoring, debugging and reusable workflows |
+### Four-Platform Financial Reporting System
 
-**The capability I want this portfolio to demonstrate: give me a real operational problem and I can structure it, build it, verify the result and iterate.**
+**WB / Wildberries · Amazon · Mercado Libre · Walmart**
 
----
-
-# Featured Case Study
-
-## 01. Four-Platform Financial Reporting & Reconciliation System
-
-**Used in a real enterprise workflow · Project Lead / Workflow Designer**  
-**WB (Wildberries) · Amazon · Mercado Libre · Walmart**
-
-Four marketplaces expose different source files, fee fields and settlement logic. I reorganized the monthly finance process around a common operating model:
+Bring WB, Amazon, Mercado Libre and Walmart source files into a local reporting workflow with a shared manual-adjustment standard and a consistent output contract.
 
 ```text
-Four marketplace data sources
-            ↓
-   Platform-specific parsing
-            ↓
-Shared manual input / adjustment standard
-            ↓
-Validation → mapping → calculation → allocation
-            ↓
- Reconciliation & exception gate
-            ↓
- Standardized financial reporting output
+Platform source files + shared manual inputs / adjustments
+                         |
+                Map - Calculate - Reconcile
+                         |
+                Standard financial report
 ```
 
-### Why this project matters
+**My ownership:** Owned workflow analysis, four-platform input interfaces, shared manual-input standard, report structure, business rules, exception boundaries, acceptance and iteration. Codex assisted implementation, refactoring and debugging.
 
-The difficult part was not “asking AI to calculate spreadsheets.” It was standardizing the business first.
+**Outcome scope:** Organized four reporting paths into an automated workflow under a common standard. Roughly 15 workdays is the project-reported former monthly workload; no month-by-month timing study is provided, so it is not a precise net-saving claim.
 
-- each marketplace can retain its real source-data structure;
-- human-supplied costs, mappings and adjustments follow one explicit input standard;
-- calculations, attribution and reconciliation follow defined rules;
-- missing costs, unknown fees and unmatched SKUs remain visible instead of being silently hidden;
-- downstream review receives a consistent reporting standard rather than four unrelated workbook conventions.
-
-A **DRAFT → FINAL** quality gate prevents unresolved exceptions from looking like completed finance work.
-
-The former end-to-end process involved roughly **15 finance workdays per month**. This describes the original workload addressed by the system, not an independently audited net saving or an invented productivity percentage.
-
-### What I own
-
-**My responsibility:** workflow discovery, business-rule decomposition, platform input design, the shared manual-input standard, standardized output, exception policy, acceptance criteria, edge-case testing, workbook validation and feedback-driven iteration.
-
-**AI / Codex assists with:** implementation, refactoring, debugging and development speed. Generated code is not the acceptance standard; business outcomes are.
-
-**[Read the full case study →](projects/sku-profit-reconciliation/README.md)**
-
----
+[Read the full case](case-studies/finance.en.md)
 
 ## Other selected work
 
-### 02. B2B Company & Contact Research
-**Used by a trade team · Independent developer**  
-Turn fragmented public information into verifiable companies, business units, purchasing roles and business contacts. Contact details require traceable sources; missing information remains missing rather than becoming an invented email.
+### 02. Alibaba.com Operations Suite
 
-**Scope:** 60 companies meeting defined prospect criteria researched; research coverage is not represented as converted sales.  
-[Read the case](projects/b2b-contact-research-agent/README.md)
+**Used by the operations team · Independent developer**
 
-### 03. Alibaba.com Operations Suite
-**Used by an operations team · Independent developer**  
-Two workflows for inquiry/customer classification and customer registration with sales attribution. Includes long-batch checkpointing, history review, deduplication, human review for ambiguity and workbook validation.
+Two distinct Skills for inquiry classification, customer registration and sales-performance attribution.
 
-**Scope:** typical batches of about 200 inquiries or 200 orders; both tools together save approximately two operations workdays per month based on project estimates.  
-[Read the case](projects/alibaba-operations-agents/README.md)
+**Engineering decision:** Inquiry processing is read-only: no messages or customer-profile edits. CAPTCHA pauses for human action rather than bypassing verification. Ambiguous cases are reviewed and corrections recorded. Validate order counts, amounts, headers, formulas and sorting.
 
-### 04. Four-Level Packaging Code System
-**Delivered to an enterprise · Independent developer**  
-A local Windows application for Pallet → Carton → B4 → Label relationships, with bidirectional lookup, batch imports, exports, import history, rollback and backup. Recovery and non-technical-user delivery were treated as product requirements, not afterthoughts.
+[Case and personal contribution](case-studies/operations.en.md)
 
-[Read the case](projects/four-level-code-system/README.md)
+### 03. Four-Level Packaging Code System
+
+**Delivered to the enterprise · Independent developer**
+
+A local Windows application combining lookup, imports, exports, rollback and backup for non-technical users.
+
+**Engineering decision:** Persistent data, recovery from mistaken imports and practical startup for non-technical users are part of delivery—not extras after a lookup screen.
+
+[Case and personal contribution](case-studies/codes.en.md)
+
+### 04. B2B Company & Contact Research
+
+**Used by the trade team · Independent developer**
+
+Convert fragmented public information into verifiable companies, business units, purchasing roles and business contacts.
+
+**Engineering decision:** Contact details must appear verbatim in a checked source. Inferring a relevant role never licenses inventing an email. Explicitly mark missing findings and third-party sources. Do not automatically send outreach.
+
+[Case and personal contribution](case-studies/research.en.md)
 
 ### 05. Serial Fiction Workflow
-**Open source · Workflow design & maintenance**  
-Separate planning, author approval, prose, independent diagnosis and state updates so AI can participate in execution without silently taking control of story decisions.
 
-[Open the repository](https://github.com/dnggxiao/serial-fiction-workflow)
+**Public source and example · Workflow design & maintenance**
+
+Separate planning, approval, prose, independent checks and state updates while preserving authorial control.
+
+**Engineering decision:** One mode per invocation. Approve before writing; update canonical prose and continuity only after checks pass. The standalone Skill does not automatically read earlier chapters and is not a one-click book generator.
+
+[Case and personal contribution](case-studies/fiction.en.md)
 
 ### 06. Desktop Intelligent Robot
-**Ongoing academic project · Lead of a two-person team**  
-Integrate control, motion, sensing and voice modules while diagnosing issues through PWM/control logic and ESP32 configuration. Embedded experience is presented within its actual coursework/project scope.
 
-[Read the case](projects/desktop-intelligent-robot/README.md)
+**Ongoing academic project · Lead of a two-person team**
 
----
+Integrate control, motion, sensing and voice interaction in a desktop device, with module-level fault isolation.
 
-## Skills · Experience made repeatable
+**Engineering decision:** Investigate servo jitter through PWM parameters and control logic, and recognition instability through ESP32 configuration. Preserve the diagnosis path, not merely the final fix.
 
-| Skill | Problem addressed | Reliability design |
+[Case and personal contribution](case-studies/robot.en.md)
+
+## Five reusable Skills
+
+| Skill | Purpose | Availability |
 | --- | --- | --- |
-| Finance Reporting & Reconciliation | Marketplace data, costs, fees, profit and standardized reports | Input validation, visible exceptions, DRAFT → FINAL |
-| B2B Company & Contact Research | Prospecting, deep dives and enrichment | Source verification; no invented contacts |
-| Inquiry Classification | Full-history review, rules and deduplication | Read-only operation, resume, human review |
-| Customer Registration & Sales Attribution | Paid orders, ownership and Excel delivery | Count, amount, formula and sorting checks |
-| Writing Serial Fiction | Chapter planning, prose and read-only diagnosis | Mode isolation, author approval and state control |
+| Four-Platform Reporting & Reconciliation | One manual-input standard. A consistent deliverable. | Private implementation · Public case study |
+| B2B Company & Contact Research | Not more guessed emails. A stronger evidence trail. | Private Skill · Public methodology |
+| New / Returning Inquiry Classification | Review the history. Then make the decision. | Private Skill · Public case study |
+| Customer Registration & Sales Attribution | Orders, customers and ownership on the same basis. | Private Skill · Public case study |
+| Writing Serial Fiction | One Skill. Three deliberately separate modes. | Open-source Skill · Inspect the source |
 
-**[Read every Skill's inputs, outputs, execution and boundaries →](skills/README.en.md)**
+[Read runtime requirements, inputs, outputs and boundaries](skills/README.en.md)
 
-A Skill here is not a prompt collection. It is a reusable workflow for a specific task with an explicit contract and failure behavior. Enterprise implementations remain private; the portfolio exposes sanitized designs and public examples.
+## Approach and project-used tools
 
-## How I work
+Understand the work → define the input/output contract → implement and validate → deliver and iterate. Codex assists implementation; I own rules, exception decisions and acceptance.
 
-**Understand the operation → Standardize inputs → Specify business rules → Define exceptions → AI-assisted implementation → Edge-case tests → Manual comparison / reconciliation → Standard delivery → Feedback & iteration**
+**Python · openpyxl · Django · SQLite · Node.js · Playwright · Chrome CDP · Git / GitHub · PyInstaller**
 
-Principles I repeatedly apply:
-
-- **Never guess required data.** Missing costs, unknown fields and unverified contacts remain visible.
-- **Design for exceptions.** Automate the normal path; route ambiguity through explicit rules or human review.
-- **Make results inspectable.** Reports, sources, formulas, amounts and states should be traceable.
-- **Make work recoverable.** Long batches and mistaken imports should not require restarting everything.
-- **Standardize interfaces.** Durable automation starts with stable input and output contracts.
-- **Treat AI as a development tool.** Model output is never proof that a business result is correct.
-
-## Technical practice
-
-| Area | Actual project use |
-| --- | --- |
-| Data & automation | Python · openpyxl · Excel workflows · reconciliation |
-| Web / local software | Django · SQLite · PyInstaller |
-| Browser automation | Node.js · playwright-core · Chrome CDP |
-| AI-assisted engineering | Codex · ChatGPT · AGENTS.md · reusable Skills |
-| Engineering delivery | Git · GitHub · testing · documentation · I/O contracts · acceptance |
-| Embedded foundations | STM32 · ESP32 · Keil5 · PWM · servos · sensors |
+STM32, ESP32 and PWM reflect coursework and academic project foundations, not advanced embedded credentials.
 
 ## Independent technical support
 
-Alongside software and automation projects, I have provided individual users with practical support for cross-border digital tools, including:
+Assist individuals with normal Google account registration, basic security and recovery setup, and day-to-day use. Support dedicated commercial network-node configuration and connection troubleshooting for cross-border business users. Independent assistance; no official Google authorization or certification is implied.
 
-- guidance for personal Google Account setup, baseline security configuration, recovery information and routine account maintenance;
-- dedicated commercial network-node configuration, connection-environment setup and basic troubleshooting for cross-border business use cases;
-- customized operating instructions and follow-up support based on the user's environment.
+## View and run
 
-This section demonstrates **user communication, environment configuration, troubleshooting and technical support**. It is not counted as a software project and does not imply official Google authorization, partnership or endorsement.
+Website source is in `docs/`, with `index.html` in Chinese and `index.en.html` in English. The standalone demonstration uses synthetic data and is not production-system verification.
 
-## Roles I am interested in
+```bash
+python -m http.server 8000 --directory docs
+```
 
-**Business Automation · AI Application Engineering · Workflow / Agent Systems · Internal Tools · Cross-border E-commerce Technology & Operations Efficiency**
+Open `http://localhost:8000`. See [DEPLOYMENT.md](DEPLOYMENT.md) for publishing. Prepared source files do not mean Pages hosting is enabled.
 
-I do not define myself only by one programming language. I am most useful when I can own a complete problem: understand the work, define the rules, use modern development tools to implement it, and remain accountable for the result.
+[Interview walkthrough](INTERVIEW_GUIDE.md) · [Verification record](verification/REPORT.md) · [GitHub](https://github.com/dnggxiao)
 
-## Bilingual portfolio site
-
-`docs/index.html` is the Chinese entry and `docs/index.en.html` is the English entry. The website is designed for fast recruiter scanning; the README and project directories provide deeper evidence.
-
-## Public boundary
-
-This is a recruiting portfolio, not a backup of enterprise production code or business data. It excludes customer lists, real orders, credentials, cookies, internal settlement files, proprietary company rules and other sensitive material. Metrics retain their stated scope and are not presented as audited results when they are estimates.
-
-**GitHub:** [dnggxiao](https://github.com/dnggxiao)
-
----
-
-*Portfolio updated September 2026 · Built around real problems, explicit rules and checkable outcomes.*
+Public material excludes customer lists, real settlements, cost data, credentials and proprietary business rules. Project status and outcomes are project-reported, not independently audited.

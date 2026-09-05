@@ -2,43 +2,49 @@
 
 [中文](README.md) · [English](README.en.md)
 
-五项有现有资料支持的可复用任务工作流。企业实现保持私有，写作 Skill 提供公开源码。本目录介绍使用场景、工程设计与边界，不提供企业生产安装包。
+五项具体任务工作流。企业实现保持私有，写作工作流提供公开源码；这不是企业安装包，也不是第三方工具原创声明。
 
-四级包装码离线应用和桌面机器人作为独立工程项目展示，不混算为额外的 Skill。
+## FINANCE / 01 — 四平台财务报表与对账
 
-## FINANCE / 01 — SKU 利润核算与对账
-
-> 让报表从“算出来”走向“可信任”。
+> 统一人工补充接口，也统一最终交付。
 
 **私有实现 · 公开案例**
 
+### 运行条件
+
+本地 Codex 工作区与项目依赖
+
 ### 输入
 
-平台结算文件、SKU 映射、成本表与必要的人工调整资料。
+WB、Amazon、美客多或 Walmart 的平台源文件，以及符合统一标准的人工补充／调整文件。实际字段、依赖和目录按私有项目约定。
 
 ### 执行流程
 
-识别订单与 SKU → 归集销售、退款、成本与费用 → 分摊共享成本 → 汇总 → 对账与异常检查。
+确认来源与必填输入 → 平台适配及 SKU 映射 → 按规则核算与归集 → 对账与异常检查 → 标准化输出。
 
 ### 输出
 
-按 SKU、产品和结算期组织的核算结果，以及明确的异常与校验状态。
+按共同标准组织的财务报表，连同异常项和校验状态；不是让模型自由编写财务数字。
 
 ### 可靠性与边界
 
-不猜成本、不静默补项。未解决的映射、费用或对账异常使输出停留在 DRAFT。
+缺失成本、未知费用、未匹配 SKU 不能猜测补齐。输入准备与异常复核仍由人负责；具体发布条件依私有实现。
 
-### 展示与验证方式
+### 展示与验证
 
-使用一个结算期的脱敏文件，检查未知 SKU 是否被列出，以及未通过校验时能否阻止 FINAL。
+作品集中的公开演示可操作“缺成本”和“对账差异”两种合成异常。它展示设计思想，不使用私有算法或真实报表模板。
 
-[对应项目与事实来源](https://github.com/dnggxiao/ai-agent-portfolio/blob/main/projects/sku-profit-reconciliation/README.md)
+[对应案例](../case-studies/finance.md)
 
 ## RESEARCH / 02 — B2B 企业与联系人研究
 
 > 不是多找几个邮箱，而是建立证据链。
 
 **私有 Skill · 公开方法**
+
+### 运行条件
+
+具备公开网页检索能力的授权环境
 
 ### 输入
 
@@ -56,17 +62,21 @@ Companies、Contacts、Business Units、Official Accounts 与 Sources 等工作�
 
 联系方式必须能回指原文；无法查证时标记未找到。排除私人家庭信息和泄露资料，不自动外联。
 
-### 展示与验证方式
+### 展示与验证
 
 给定一家公司，说明相关采购角色的依据，并为每项公开商务联系信息保留来源。
 
-[对应项目与事实来源](https://github.com/dnggxiao/ai-agent-portfolio/blob/main/projects/b2b-contact-research-agent/README.md)
+[对应案例](../case-studies/research.md)
 
 ## OPERATIONS / 03 — 询盘新老客户识别
 
 > 看完整历史，再做可解释的判断。
 
 **私有 Skill · 公开案例**
+
+### 运行条件
+
+已授权店铺会话、Node.js 与浏览器环境
 
 ### 输入
 
@@ -84,17 +94,21 @@ Companies、Contacts、Business Units、Official Accounts 与 Sources 等工作�
 
 只读访问；不发消息、不分配、不打标签、不删除、不改客户资料。验证码暂停交给人，模糊情况不强判。
 
-### 展示与验证方式
+### 展示与验证
 
 以约 200 条询盘为典型批次，中途停止后从记录的进度继续；两条并发是已有案例的默认设置。
 
-[对应项目与事实来源](https://github.com/dnggxiao/ai-agent-portfolio/blob/main/projects/alibaba-operations-agents/README.md)
+[对应案例](../case-studies/operations.md)
 
 ## OPERATIONS / 04 — 客户登记与销售业绩归属
 
 > 把订单、客户和业务员放回同一口径。
 
 **私有 Skill · 公开案例**
+
+### 运行条件
+
+已授权店铺会话及表格输出依赖
 
 ### 输入
 
@@ -112,17 +126,21 @@ Companies、Contacts、Business Units、Official Accounts 与 Sources 等工作�
 
 核对订单数、交易金额、表头、公式和业务员排序；与人工工作簿进行差异检查。
 
-### 展示与验证方式
+### 展示与验证
 
 对一个约 200 笔订单的典型批次，展示自动结果与人工台账之间的差异，而不是只给汇总数字。
 
-[对应项目与事实来源](https://github.com/dnggxiao/ai-agent-portfolio/blob/main/projects/alibaba-operations-agents/README.md)
+[对应案例](../case-studies/operations.md)
 
 ## CREATIVE / 05 — Writing Serial Fiction
 
 > 一个 Skill，三种清晰分工的模式。
 
 **开源 Skill · 可查看源码**
+
+### 运行条件
+
+完整工作区或独立 Skill；资料需明确提供
 
 ### 输入
 
@@ -140,14 +158,18 @@ chapter-planning：组织可执行场景；prose-writing：按确认的资料写
 
 保持既定事实与作者决定。独立 Skill 不会自动读取历史文件；完整工作流的轻检和条件修正不属于这三种模式。
 
-### 展示与验证方式
+### 展示与验证
 
 从公开原创示例《雾港回声》查看资料、执行卡、草稿与检查报告；使用源码仓库中的安装和迁移说明。
 
-[对应项目与事实来源](https://github.com/dnggxiao/serial-fiction-workflow)
+```text
+$writing-serial-fiction mode=chapter-planning
+$writing-serial-fiction mode=prose-writing
+$writing-serial-fiction mode=readonly-diagnosis
+```
 
----
+[对应案例](../case-studies/fiction.md)
 
-公开介绍不表示私有工作流可以在所有 ChatGPT 或 Codex 环境中原样运行。浏览器访问、本地依赖、授权凭据和输入契约仍需按实际实现满足。
+私有流程需要满足本地依赖、授权会话和输入标准，不保证在不同环境中原样运行。四级包装码应用和机器人不额外计作 Skill。
 
 [返回作品集](../README.md)

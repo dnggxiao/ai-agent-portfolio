@@ -1,76 +1,60 @@
-# 发布与维护 / Deployment & maintenance
+# 运行、发布与维护 / Run, publish and maintain
 
-## 中文
+## 本地查看 / Local preview
 
-### 启用 GitHub Pages
-
-本站是静态 HTML/CSS/JavaScript，不需要付费服务器、API 密钥或构建框架。
-
-打开本仓库的 **Settings → Pages**，在 **Build and deployment** 中设置：
-
-- Source：**Deploy from a branch**
-- Branch：**main**
-- Folder：**/docs**
-- 点击 **Save**
-
-首次构建完成后，以 Pages 设置页显示的实际地址为准。此仓库的预期地址为：
-
-- 中文：`https://dnggxiao.github.io/ai-agent-portfolio/`
-- 英文：`https://dnggxiao.github.io/ai-agent-portfolio/index.en.html`
-
-**这两条是启用后的预期地址，不表示当前已经上线。** `docs/.nojekyll` 已包含在仓库中。若出现 404，先确认 Pages 已启用、源目录为 `/docs`、构建已完成，而不是继续修改首页文件。
-
-官方依据：[GitHub Pages 发布源配置](https://docs.github.com/en/pages/getting-started-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site)。
-
-### 本地预览
+在仓库根目录执行 / From the repository root:
 
 ```bash
 python -m http.server 8000 --directory docs
 ```
 
-打开 `http://localhost:8000`。中文入口为 `index.html`，英文入口为 `index.en.html`。页面资源全部在 `docs/` 内，也可在允许本地脚本的浏览器中直接打开 HTML 文件。
+打开 `http://localhost:8000`；英文入口为 `http://localhost:8000/index.en.html`。HTML、CSS 和 JavaScript 均在本地，页面不需要外部 API、字体、分析脚本或账号密钥。
 
-### 修改内容
+Use the URLs above for Chinese and English. All page assets are local; the page needs no external API, fonts, analytics or account keys.
 
-| 文件 | 作用 |
-| --- | --- |
-| `docs/content.js` | 六个项目、五项 Skill 的中英文内容和来源 |
-| `docs/app.js` | 双语界面文案、渲染、筛选、搜索与交互示意 |
-| `docs/styles.css` | 配色、排版、响应式、焦点与打印样式 |
-| `docs/index.html` / `docs/index.en.html` | 两个语言入口与无脚本替代链接 |
-| `README.md` / `README.en.md` | GitHub 中英文首页 |
-| `skills/README.md` / `skills/README.en.md` | 每项 Skill 的完整介绍 |
+## GitHub Pages
 
-修改项目事实时，同步更新对应的 README 与 Skill 文档。新成果应能关联到真实项目记录；不要把“已交付”改成“生产使用”，除非实际状态已经确认。不要将客户资料、账号、Cookie 或内部文件复制进内容文件。
+在仓库 **Settings → Pages → Build and deployment** 中，Source 选择 **Deploy from a branch**，Branch 选择 **main**，目录选择 **/docs**，保存。以该页面返回的网址和构建状态为准。
 
-### 检查
+In **Settings → Pages → Build and deployment**, choose **Deploy from a branch**, branch **main**, folder **/docs**, then save. Use the URL and build status reported by GitHub.
+
+本次使用的 GitHub 连接不提供 Pages 设置写入操作；源代码已提交不等于托管已开启。不要仅根据预期网址对外宣称已上线。
+
+The connection used for this update does not expose a Pages-settings write action. Committed source does not itself enable hosting. Do not present an expected URL as a verified deployment.
+
+## 内容更新 / Content maintenance
+
+`docs/content.js` 是项目和 Skill 事实的单一数据来源。修改后执行：
+`docs/content.js` is the single source for project and Skill facts. After an edit, run:
 
 ```bash
-python -m unittest discover -s tests -v
-node --check docs/app.js
-node --check docs/content.js
+python tools/build_docs.py
+python tools/build_docs.py --check
 ```
 
-发布前手动检查两个语言入口、顶部语言链接、五类项目筛选、Skill 搜索空结果、详情展开、关联项目跳转，以及 320px / 390px / 桌面布局。
+此命令同步中英文 README、Skill 文档、案例说明和无脚本 HTML。界面文案与交互位于 `docs/app.js`，样式位于 `docs/styles.css`。
 
-本次构建已在 Chromium 的内联测试页面中检查中英文 1440px、390px 和 320px 布局、筛选、搜索及校验状态交互。测试环境限制了实际 URL 导航，因此不把这些结果说成线上访问或跨浏览器兼容测试。上线后仍需验证真实 Pages 地址。
+This synchronizes bilingual READMEs, Skill documentation, case studies and no-script HTML. Interface copy and behavior live in `docs/app.js`; styling is in `docs/styles.css`.
 
-## English
+## 自动检查 / Checks
 
-### Publish
+```bash
+python -m unittest discover -s tests -p 'test_*.py' -v
+node --test tests/demo.test.cjs
+python -m pip install -r requirements-dev.txt
+python -m playwright install chromium
+python tests/browser_check.py
+```
 
-This is a static site. No paid server, API key or framework build is required.
+浏览器检查在本地临时服务器运行。已有 Chromium 时，可通过 `CHROMIUM_EXECUTABLE` 指定路径。开发依赖不属于网站运行依赖。
 
-In **Settings → Pages → Build and deployment**, choose **Deploy from a branch**, then **main** and **/docs**, and save. The `.nojekyll` file is included. Wait for the build, then use the address actually reported by Pages.
+Browser checks use a temporary local server. Set `CHROMIUM_EXECUTABLE` to use an existing Chromium. Development dependencies are not website runtime dependencies.
 
-Expected URLs after enablement are listed above. They are not a claim that hosting is already live. For a 404, check enablement, the `/docs` source and build completion first.
+CI 只测试网页和合成演示，不测试私有生产系统，也不自动改动 Pages 设置。
+CI tests the website and synthetic example, not private production systems, and does not change Pages settings.
 
-See the [official publishing-source documentation](https://docs.github.com/en/pages/getting-started-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site).
+## 发布前核对 / Before publication
 
-### Maintain
+检查最新验收记录、两种语言、窄屏、案例链接和下载内容。避免提交真实财务数据、客户信息、凭据、Cookie 或本地环境文件。项目效益口径以 [EVIDENCE.md](EVIDENCE.md) 为准。
 
-Run the local preview and validation commands above. `content.js` holds bilingual project/Skill records; `app.js` holds interface copy and behavior; `styles.css` holds the visual system. Update the Markdown versions when facts change. Never commit production data or credentials.
-
-Check both language entries, navigation targets, project categories, Skill search and empty states, expandable details, related-project links, keyboard focus and narrow layouts.
-
-The build was checked in Chromium using an inline fixture at 1440px, 390px and 320px in both languages. The environment blocked actual URL navigation, so this is not a live deployment or cross-browser test. Verify the real Pages URL after publication.
+Review the latest verification record, both languages, narrow screens, case links and downloads. Do not commit actual finance data, customer details, credentials, cookies or local environment files. See [EVIDENCE.md](EVIDENCE.md) for claim boundaries.
